@@ -1,56 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta property="og:title" content="Personal Portfolio" />
-    <meta property="og:description" content="My Personal Portfolio" />
-    <meta property="og:url" content="{{ url }}" />
+{% extends "template.html" %} {% block content %}
+<div class="card about-container">
+  <div class="about-me">
+    <h1 class="about-title">About Priya</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut semper
+      nunc. Fusce congue, quam id porttitor rutrum, justo risus luctus purus, id
+      aliquam mauris felis nec justo. Phasellus tincidunt purus in ex fermentum
+      vulputate. Mauris non turpis vestibulum, congue tellus eget, aliquam
+      velit. Nulla vel convallis purus. Nam sollicitudin eu est eu laoreet.
+    </p>
+  </div>
+</div>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="{{url_for('static',filename='dist/css/output.css')}}"
-    />
+<div class="card-container">
+  <div class="card">
+    <h3>Work Experience 1</h3>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, laborum.
+    </p>
+  </div>
+  <div class="card">
+    <h3>Work Experience 2</h3>
+    <p>Doloremque commodi unde eaque! Et natus dolorum corrupti ut numquam.</p>
+  </div>
+  <div class="card">
+    <h3>Work Experience 3</h3>
+    <p>Doloremque commodi unde eaque! Et natus dolorum corrupti ut numquam.</p>
+  </div>
+</div>
 
-    <link
-      lang="sass"
-      rel="stylesheet"
-      href="{{url_for('static',filename='styles/main.css')}}"
-    />
-    <link
-      rel="icon"
-      href="{{url_for('static',filename='img/mlh.ico')}}"
-      type="image/x-icon"
-    />
+<div class="card about-container">
+  <div class="about-me">
+    <h1 class="about-title">About Joel</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut semper
+      nunc. Fusce congue, quam id porttitor rutrum, justo risus luctus purus, id
+      aliquam mauris felis nec justo. Phasellus tincidunt purus in ex fermentum
+      vulputate. Mauris non turpis vestibulum, congue tellus eget, aliquam
+      velit. Nulla vel convallis purus. Nam sollicitudin eu est eu laoreet.
+    </p>
+  </div>
+</div>
 
-    <title>{{ title }}</title>
-  </head>
-
-  <body>
-    <header class="nav-bar">
-      <div class="nav-content">
-        <a href="/">
-          <div class="nav-logo">
-            <img src="{{url_for('static',filename='img/logo.svg')}}" />
-          </div>
-        </a>
-      </div>
-    </header>
-
-    <div class="profile">
-      <div id="profile-picture" class="profile-picture">
-        <img src="{{url_for('static',filename='img/logo.jpg')}}" />
-      </div>
-      <h1>{{ title }}</h1>
-    </div>
-  </body>
-</html>
+<div class="card-container">
+  <div class="card">
+    <h3>Work Experience 1</h3>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, laborum.
+    </p>
+  </div>
+  <div class="card">
+    <h3>Work Experience 2</h3>
+    <p>Doloremque commodi unde eaque! Et natus dolorum corrupti ut numquam.</p>
+  </div>
+  <div class="card">
+    <h3>Work Experience 3</h3>
+    <p>Doloremque commodi unde eaque! Et natus dolorum corrupti ut numquam.</p>
+  </div>
+</div>
+{% endblock %} ```
