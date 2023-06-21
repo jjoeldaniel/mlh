@@ -28,6 +28,12 @@ def work():
 
     return render_template("work.html", title=names, url=os.getenv("URL"))
 
+@app.route("/hobbies")
+def hobbies():
+
+    return render_template("hobbies.html", title=names, url=os.getenv("URL"))
+
+
 @app.route("/<path:path>")
 def catch_all(path):
     """A special route that catches all other requests

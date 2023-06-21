@@ -175,3 +175,19 @@ li a:hover {
 .work-title {
     text-align: center;
 }
+
+/* Hobbies */
+
+.hobby-title {
+    margin: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card img {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 180px;
+    width: 500px;
+}
