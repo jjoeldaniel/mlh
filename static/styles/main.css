@@ -66,6 +66,8 @@ body {
     float: right;
     text-align: right;
     justify-content: right;
+    font-size: 18px;
+    font-weight: normal;
 }
   
 li a {
