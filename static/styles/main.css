@@ -92,10 +92,18 @@ li a:hover {
 }
 
 .profile {
-  background-color: #1d539f !important;
-  text-align: center;
-  height: 320px;
-  margin-bottom: 50px;
+    background-color: #1d539f !important;
+    text-align: center;
+    height: 320px;
+    margin-bottom: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-line {
+    display: flex;
+    height: 320px;
+    width: 300px;
 }
 
 .profile h1 {
@@ -105,13 +113,13 @@ li a:hover {
 }
 
 .profile img {
-  border-radius: 50%;
-  max-width: 100%;
-  max-height: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  padding: 20px;
+    border-radius: 90%;
+    max-height: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
 }
 
 .profile .profile-picture {
