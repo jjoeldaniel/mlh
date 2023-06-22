@@ -1,0 +1,22 @@
+<header class="nav-bar">
+    <div class="nav-content">
+      <div class="nav-collect">
+        <div class="nav-logo">
+          <a href="/"><img src="{{url_for('static',filename='img/logo.svg')}}" /></a>
+        </div>
+      </div>
+      <div class="nav-items">
+          <li><a href="/work">Work Experience</a></li>
+          <li><a href="/hobbies">Hobbies</a></li>
+          <li><a href="/map">Map</a></li>
+      </div>
+        </div>
+    </div>
+</header>
+
+  <div class="profile">
+    <div id="profile-picture" class="profile-picture">
+      <img src="{{url_for('static',filename='img/logo.jpg')}}" />
+    </div>
+    <h1>{{ title }}</h1>
+  </div>
