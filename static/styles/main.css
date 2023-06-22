@@ -34,14 +34,14 @@ body {
 }
 
 .nav-content .nav-logo {
-  height: 60px;
-  margin: auto;
+    height: 60px;
 }
 
 .nav-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .nav-logo img {
@@ -54,6 +54,41 @@ body {
   text-align: right;
   padding-top: 0px;
   padding-right: 0px;
+}
+
+.nav-collect {
+    display: inline-flex;
+    list-style-type:none;
+    overflow: hidden;
+}
+  
+.nav-items {
+    display: inline-flex;
+    list-style-type:none;
+    overflow: hidden;
+    float: right;
+}
+
+.nav-bar li {
+    float: right;
+    text-align: right;
+    justify-content: right;
+    font-size: 18px;
+    font-weight: normal;
+}
+  
+li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    margin-right: 1em;
+    margin-left: 0.5em;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    color: white;
 }
 
 .profile {
@@ -106,12 +141,11 @@ body {
 /* About Me */
 
 .about-container {
-  /* background-color: #1C539F; */
-  padding: 3em;
-  margin: 1em;
-  display: flex;
-  justify-content: center; /* Center content horizontally */
-  align-items: center; /* Center content vertically */
+    padding: 3em;
+    margin: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .about-title {
@@ -142,23 +176,24 @@ body {
 }
 
 .card h3 {
-  text-align: center;
+    text-align: center;
 }
 
-.legend {
-  line-height: 18px;
-  color: #555;
-}
-.legend i {
-  width: 18px;
-  height: 18px;
-  float: left;
-  margin-right: 8px;
-  opacity: 0.7;
+.work-title {
+    text-align: center;
 }
 
-.info {
-  background-color: #e8e8e8;
-  padding: 15px;
-  border-radius: 10px;
+/* Hobbies */
+.hobby-title {
+    margin: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card img {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 180px;
+    width: 500px;
 }
