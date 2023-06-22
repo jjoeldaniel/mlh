@@ -12,6 +12,7 @@ app = Flask(__name__, template_folder="../templates", static_folder="../static")
 
 names = "Joel & Priya"
 
+
 @app.route("/")
 @app.route("/index")
 def index():
@@ -23,14 +24,19 @@ def index():
     # print(template.render(the="variables", go="here"))
     return render_template("index.html", title=names, url=os.getenv("URL"))
 
+
+@app.route("/map")
+def map():
+    return render_template("map.html", title=names, url=os.getenv("URL"))
+  
+ 
 @app.route("/work")
 def work():
-
     return render_template("work.html", title=names, url=os.getenv("URL"))
 
+  
 @app.route("/hobbies")
 def hobbies():
-
     return render_template("hobbies.html", title=names, url=os.getenv("URL"))
 
 
