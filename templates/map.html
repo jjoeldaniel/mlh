@@ -64,24 +64,7 @@
   </head>
 
   <body>
-    <header class="nav-bar">
-      <div class="nav-content">
-        <div class="nav-logo">
-          <a href="/"
-            ><img src="{{url_for('static',filename='img/logo.svg')}}"
-          /></a>
-        </div>
-      </div>
-    </header>
-
-    <div class="profile">
-      <div id="profile-picture" class="profile-picture">
-        <img src="{{url_for('static',filename='img/logo.jpg')}}" />
-      </div>
-      <h1>{{ title }}</h1>
-    </div>
-
-    {% block content %}{% endblock %}
+    {% include 'navbar.html' %} {% block content %}{% endblock %}
   </body>
   <div class="card-container">
     <div id="map"></div>
