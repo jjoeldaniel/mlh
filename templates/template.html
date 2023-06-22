@@ -109,6 +109,18 @@
           return "#e8e8e8";
       }
     }
+    function getLabel(v) {
+      switch (v) {
+        case 1: // both visited
+          return "Both";
+        case 2: // joel
+          return "Joel";
+        case 3: // priya
+          return "Priya";
+        default: // neither
+          return "Neither";
+      }
+    }
 
     function style(feature) {
       return {
@@ -121,6 +133,74 @@
       };
     }
 
-    L.geoJson(statesData, { style: style }).addTo(map);
+    function highlightFeature(e) {
+      var layer = e.target;
+
+      layer.setStyle({
+        weight: 5,
+        color: "#fff",
+        dashArray: "",
+        fillOpacity: 1,
+      });
+
+      layer.bringToFront();
+    }
+
+    function resetHighlight(e) {
+      geojson.resetStyle(e.target);
+    }
+
+    function zoomToFeature(e) {
+      map.fitBounds(e.target.getBounds());
+    }
+
+    function onEachFeature(feature, layer) {
+      layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature,
+      });
+    }
+
+    geojson = L.geoJson(statesData, {
+      style: style,
+      onEachFeature: onEachFeature,
+    }).addTo(map);
+
+    var info = L.control();
+
+    info.onAdd = function (map) {
+      this._div = L.DomUtil.create("div", "info"); // create a div with a class "info"
+      this.update();
+      return this._div;
+    };
+
+    // method that we will use to update the control based on feature properties passed
+    info.update = function (props) {
+      this._div.innerHTML = "<h4>Visited States</h4>";
+    };
+
+    info.addTo(map);
+
+    var legend = L.control({ position: "bottomright" });
+
+    legend.onAdd = function (map) {
+      var div = L.DomUtil.create("div", "info legend"),
+        grades = [1, 2, 3];
+
+      // loop through our density intervals and generate a label with a colored square for each interval
+      for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+          '<i style="background:' +
+          getColor(grades[i]) +
+          '"></i> ' +
+          getLabel(grades[i]) +
+          "<br>";
+      }
+
+      return div;
+    };
+
+    legend.addTo(map);
   </script>
 </html>
