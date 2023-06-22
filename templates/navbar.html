@@ -6,6 +6,7 @@
         </div>
       </div>
       <div class="nav-items">
+        <li><a href="/">Home</a></li>
           <li><a href="/work">Work Experience</a></li>
           <li><a href="/hobbies">Hobbies</a></li>
           <li><a href="/map">Map</a></li>
@@ -15,8 +16,11 @@
 </header>
 
   <div class="profile">
-    <div id="profile-picture" class="profile-picture">
-      <img src="{{url_for('static',filename='img/logo.jpg')}}" />
+    <div id="profile-picture" class="profile-picture md:pt-5 pt-24 md:pr-32 pr-44 nav-center">
+      <div class="profile-line">
+        <img src="{{url_for('static',filename='img/priya.jpg')}}" />
+        <img src="{{url_for('static',filename='img/joel.jpg')}}" />
     </div>
+  </div>
     <h1>{{ title }}</h1>
   </div>
