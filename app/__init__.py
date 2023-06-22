@@ -7,6 +7,7 @@ app = Flask(__name__, template_folder="../templates", static_folder="../static")
 
 names = "Joel & Priya"
 
+
 @app.route("/")
 @app.route("/index")
 def index():
@@ -16,6 +17,12 @@ def index():
     """
 
     return render_template("index.html", title=names, url=os.getenv("URL"))
+
+
+@app.route("/map")
+def map():
+    return render_template("map.html", title=names, url=os.getenv("URL"))
+
 
 @app.route("/<path:path>")
 def catch_all(path):
@@ -29,6 +36,7 @@ def catch_all(path):
     """
 
     return redirect(url_for("index"))
+
 
 if __name__ == "__main__":
     app.run()
