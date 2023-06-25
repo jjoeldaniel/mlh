@@ -20,6 +20,9 @@ def index():
     # print(template.render(the="variables", go="here"))
     return render_template("index.html", title=NAMES, url=URL)
 
+@app.route("/education")
+def education():
+    return render_template("education.html", title=NAMES, url=URL)
 
 @app.route("/map")
 def map():
