@@ -554,12 +554,24 @@ video {
   padding-top: 6rem;
 }
 
+.pr-0 {
+  padding-right: 0px;
+}
+
 @media (min-width: 768px) {
-  .md\:pr-32 {
-    padding-right: 8rem;
+  .md\:pr-44 {
+    padding-right: 11rem;
   }
 
   .md\:pt-5 {
     padding-top: 1.25rem;
+  }
+
+  .md\:pr-32 {
+    padding-right: 8rem;
+  }
+
+  .md\:pr-5 {
+    padding-right: 1.25rem;
   }
 }
