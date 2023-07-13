@@ -6,7 +6,13 @@ from peewee import *
 load_dotenv()
 app = Flask(__name__, template_folder="../templates", static_folder="../static")
 
-mydb = MySQLDatabase(os.getenv("MYSQL_DATABASE"), user=os.getenv("MYSQL_USER"), password=os.getenv("MYSQL_PASSWORD"), host=os.getenv("MYSQL_HOST"), port=3306)
+mydb = MySQLDatabase(
+    os.getenv("MYSQL_DATABASE"),
+    user=os.getenv("MYSQL_USER"),
+    password=os.getenv("MYSQL_PASSWORD"),
+    host=os.getenv("MYSQL_HOST"),
+    port=3306,
+)
 
 print(mydb)
 
@@ -25,9 +31,11 @@ def index():
     # print(template.render(the="variables", go="here"))
     return render_template("index.html", title=NAMES, url=URL)
 
+
 @app.route("/education")
 def education():
     return render_template("education.html", title=NAMES, url=URL)
+
 
 @app.route("/map")
 def map():
