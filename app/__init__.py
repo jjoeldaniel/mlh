@@ -1,9 +1,14 @@
 import os
 from flask import Flask, render_template, redirect, url_for, request
 from dotenv import load_dotenv
+from peewee import *
 
 load_dotenv()
 app = Flask(__name__, template_folder="../templates", static_folder="../static")
+
+mydb = MySQLDatabase(os.getenv("MYSQL_DATABASE"), user=os.getenv("MYSQL_USER"), password=os.getenv("MYSQL_PASSWORD"), host=os.getenv("MYSQL_HOST"), port=3306)
+
+print(mydb)
 
 NAMES = "Joel & Priya"
 URL = os.getenv("URL")
