@@ -44,30 +44,44 @@ class TimelinePost(Model):
         database = mydb
 
 
+class InvalidPostException(Exception):
+    "Raised when a post is invalid"
+    pass
+
+
 mydb.connect()
 mydb.create_tables([TimelinePost])
 URL = os.getenv("URL")
 
 
 def handle_timeline_post(form):
-    name = form["name"]
-    email = form["email"]
-    content = form["content"]
-    timeline_post = TimelinePost.create(name=name, email=email, content=content)
+    name = form["name"].strip()
+    email = form["email"].strip()
+    content = form["content"].strip()
 
+    if name == "" or email == "" or content == "":
+        raise InvalidPostException("Invalid post")
+
+    timeline_post = TimelinePost.create(name=name, email=email, content=content)
     return model_to_dict(timeline_post)
 
 
 @app.route("/timeline", methods=["POST"])
 def post_time_line_post():
-    _ = handle_timeline_post(request.form)
+    try:
+        _ = handle_timeline_post(request.form)
+    except InvalidPostException:
+        pass
     return redirect(url_for("timeline"))
 
 
 @app.route("/api/timeline_post", methods=["POST"])
 def api_post_time_line_post():
-    timeline_post = handle_timeline_post(request.form)
-    return timeline_post
+    try:
+        timeline_post = handle_timeline_post(request.form)
+        return timeline_post
+    except InvalidPostException:
+        return {"error": "Invalid post"}
 
 
 @app.route("/api/timeline_post", methods=["DELETE"])
