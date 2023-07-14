@@ -38,6 +38,7 @@ mydb.create_tables([TimelinePost])
 URL = os.getenv("URL")
 
 
+@app.route("/timeline", methods=["POST"])
 @app.route("/api/timeline_post", methods=["POST"])
 def post_time_line_post():
     name = request.form["name"]
@@ -89,6 +90,11 @@ def education():
     return render_template("education.html", title="Education", url=URL)
 
 
+@app.route("/timeline", methods=["GET"])
+def timeline():
+    return render_template("timeline.html", title="Timeline", url=URL)
+
+
 @app.route("/map")
 def map():
     return render_template("map.html", title="Map", url=URL)
@@ -119,4 +125,4 @@ def catch_all(path):
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
