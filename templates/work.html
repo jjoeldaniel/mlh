@@ -1,58 +1,65 @@
-{% extends "template.html" %} {% block content %}
+{% extends "base.html" %}
+{% block content %}
+<style>
+    h1,
+    h2 {
+        text-align: center;
+    }
+</style>
 
-<div class="card">
-  <h1 class="work-title">Priya Work Experience</h1>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut semper
-    nunc. Fusce congue, quam id porttitor rutrum, justo risus luctus purus, id
-    aliquam mauris felis nec justo. Phasellus tincidunt purus in ex fermentum
-    vulputate. Mauris non turpis vestibulum, congue tellus eget, aliquam velit.
-    Nulla vel convallis purus. Nam sollicitudin eu est eu laoreet.
-  </p>
-</div>
+<div
+    class="container pt-10 pb-20 md:pb-32 md:pt-24 space-y-6 h-full mx-auto pl-5 pr-5 md:max-w-5xl max-w-lg flex flex-col justify-center items-center">
 
-<div class="card-container">
-  <div class="card">
-    <h3>Work Experience 1</h3>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, laborum.
+    <h1 class="text-3xl font-bold pb-8">Work</h1>
+
+    <div class="pb-2 flex-row md:max-w-2xl text-center">
+        <div class="flex place-items-center">
+            <h2 class="text-2xl font-bold pb-0 mb-0 pr-10 md:pr-28 text-left">Production Engineer Fellow</h2>
+            <span class="ml-4">Aug 2023 - Present</span>
+        </div>
+        <h3 class="text-lg pt-0 mt-0 text-left">Major League Hacking</h3>
+    </div>
+
+    <p class="md:max-w-xl text-justify">As a Production Engineer Fellow at Major League Hacking since June 2023, I have had the
+        opportunity to engage in fruitful collaboration with my peers through regular stand-ups and daily one-on-one
+        meetings. During this time, I have been fortunate to receive mentorship from experienced Meta production
+        engineers, who have imparted invaluable knowledge on various subjects such as continuous integration and
+        delivery, containerization, and networking. These interactions have not only enhanced my technical skills but
+        also provided me with a solid foundation for navigating the intricacies of production engineering.</p>
+
+    <div class="pb-2 flex-row md:max-w-2xl text-center">
+        <div class="flex place-items-center">
+            <h2 class="text-2xl font-bold pb-0 mb-0 pr-10 md:pr-14 text-left">Supplemental Instruction Leader</h2>
+            <span class="ml-4">Aug 2023 - Present</span>
+        </div>
+        <h3 class="text-lg pt-0 mt-0 text-left">California State University, Fullerton</h3>
+    </div>
+
+    <p class="md:max-w-xl text-justify">As a Supplemental Instructor since August 2023, I have been responsible for facilitating
+        interactive and collaborative sessions aimed at enhancing students' comprehension of course material. Through
+        these sessions, I have successfully contributed to a remarkable average grade increase of 10%. To achieve this,
+        I focused on reinforcing important computer science fundamentals, including data structures, programming
+        paradigms, and object-oriented programming. By creating an engaging and supportive learning environment, I have
+        helped students grasp these fundamental concepts more effectively, resulting in improved academic performance.
     </p>
-  </div>
-  <div class="card">
-    <h3>Work Experience 2</h3>
-    <p>Doloremque commodi unde eaque! Et natus dolorum corrupti ut numquam.</p>
-  </div>
-  <div class="card">
-    <h3>Work Experience 3</h3>
-    <p>Doloremque commodi unde eaque! Et natus dolorum corrupti ut numquam.</p>
-  </div>
-</div>
 
-<div class="card card-title">
-  <h1 class="work-title">Joel Work Experience</h1>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut semper
-    nunc. Fusce congue, quam id porttitor rutrum, justo risus luctus purus, id
-    aliquam mauris felis nec justo. Phasellus tincidunt purus in ex fermentum
-    vulputate. Mauris non turpis vestibulum, congue tellus eget, aliquam velit.
-    Nulla vel convallis purus. Nam sollicitudin eu est eu laoreet.
-  </p>
-</div>
+    <div class="pb-2 flex-row md:max-w-2xl text-center">
+        <div class="flex place-items-center">
+            <h2 class="text-2xl font-bold pb-0 mb-0 pr-10 md:pr-56 text-left">Student Researcher</h2>
+            <span class="ml-4">June - July 2023</span>
+        </div>
+        <h3 class="text-lg pt-0 mt-0 text-left">California State University, Fullerton</h3>
+    </div>
 
-<div class="card-container">
-  <div class="card">
-    <h3>Work Experience 1</h3>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, laborum.
+    <p class="md:max-w-xl text-justify">As a Research Assistant at CSU Fullerton from May 2023 to August 2023, I had the opportunity
+        to engage in diverse and impactful projects. One of my notable achievements was co-developing an interactive
+        website that educates users on the correlation between foodborne illness outbreaks and coastal states. By
+        utilizing Mapbox, I effectively visualized population density and outbreak data, providing users with an
+        intuitive and informative experience. Additionally, I actively participated in faculty-led workshops where I
+        deepened my understanding of machine learning and data science concepts. These workshops proved instrumental in
+        expanding my knowledge and honing my skills in these areas.
     </p>
-  </div>
-  <div class="card">
-    <h3>Work Experience 2</h3>
-    <p>Doloremque commodi unde eaque! Et natus dolorum corrupti ut numquam.</p>
-  </div>
-  <div class="card">
-    <h3>Work Experience 3</h3>
-    <p>Doloremque commodi unde eaque! Et natus dolorum corrupti ut numquam.</p>
-  </div>
+
 </div>
-{% endblock %} ```
+
+{% endblock %}

@@ -7,7 +7,6 @@ from peewee import (
     CharField,
     TextField,
     DateTimeField,
-    DoesNotExist,
 )
 from playhouse.shortcuts import model_to_dict
 import datetime
@@ -36,8 +35,6 @@ class TimelinePost(Model):
 
 mydb.connect()
 mydb.create_tables([TimelinePost])
-
-NAMES = "Joel & Priya"
 URL = os.getenv("URL")
 
 
@@ -84,27 +81,27 @@ def index():
     Return: The content we want to display to a user
     """
     # print(template.render(the="variables", go="here"))
-    return render_template("index.html", title=NAMES, url=URL)
+    return render_template("index.html", title="Home", url=URL)
 
 
 @app.route("/education")
 def education():
-    return render_template("education.html", title=NAMES, url=URL)
+    return render_template("education.html", title="Education", url=URL)
 
 
 @app.route("/map")
 def map():
-    return render_template("map.html", title=NAMES, url=URL)
+    return render_template("map.html", title="Map", url=URL)
 
 
 @app.route("/work")
 def work():
-    return render_template("work.html", title=NAMES, url=URL)
+    return render_template("work.html", title="Work", url=URL)
 
 
 @app.route("/hobbies")
 def hobbies():
-    return render_template("hobbies.html", title=NAMES, url=URL)
+    return render_template("hobbies.html", title="Hobbies", url=URL)
 
 
 @app.route("/<path:path>")

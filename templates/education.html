@@ -1,30 +1,31 @@
-{% extends "template.html" %} 
+{% extends "base.html" %}
 {% block content %}
+<style>
+    h1,
+    h2 {
+        text-align: center;
+    }
+</style>
 
-<div class="card-container">
-  <div class="card">
-    <h3>Priya: Current Education</h3>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, laborum.
-    </p>
-  </div>
-  <div class="card">
-    <h3>Priya: Previous Education</h3>
-    <p>Doloremque commodi unde eaque! Et natus dolorum corrupti ut numquam.</p>
-  </div>
-</div>
+<div
+    class="container pt-10 pb-20 md:pb-32 md:pt-24 space-y-6 h-full mx-auto pl-5 pr-5 md:max-w-5xl max-w-lg flex flex-col justify-center items-center">
 
-<div class="card-container">
-  <div class="card">
-    <h3>Joel: Current Education</h3>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, laborum.
-    </p>
-  </div>
-  <div class="card">
-    <h3>Joel: Previous Education</h3>
-    <p>Doloremque commodi unde eaque! Et natus dolorum corrupti ut numquam.</p>
-  </div>
+    <h1 class="text-3xl font-bold pb-8 md:pb-20">Education</h1>
+
+    <p class="md:max-w-xl">Hi there! I'm a computer science major at <strong>California State University, Fullerton</strong>.</p>
+
+    <p class="md:max-w-xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut` aliquip ex ea commodo consequat.</p>
+    
+    <p class="md:max-w-xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut` aliquip ex ea commodo consequat.</p>
+
+    <p class="md:max-w-xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut` aliquip ex ea commodo consequat.</p>
+
 </div>
 
 {% endblock %}

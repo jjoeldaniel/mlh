@@ -1,28 +1,31 @@
-{% extends "template.html" %} {% block content %}
-<div class="card about-container">
-  <div class="about-me">
-    <h1 class="about-title">About Priya</h1>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut semper
-      nunc. Fusce congue, quam id porttitor rutrum, justo risus luctus purus, id
-      aliquam mauris felis nec justo. Phasellus tincidunt purus in ex fermentum
-      vulputate. Mauris non turpis vestibulum, congue tellus eget, aliquam
-      velit. Nulla vel convallis purus. Nam sollicitudin eu est eu laoreet.
-    </p>
-  </div>
-</div>
+{% extends "base.html" %}
+{% block content %}
+<style>
+    h1,
+    h2 {
+        text-align: center;
+    }
+</style>
 
-<div class="card about-container">
-  <div class="about-me">
-    <h1 class="about-title">About Joel</h1>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut semper
-      nunc. Fusce congue, quam id porttitor rutrum, justo risus luctus purus, id
-      aliquam mauris felis nec justo. Phasellus tincidunt purus in ex fermentum
-      vulputate. Mauris non turpis vestibulum, congue tellus eget, aliquam
-      velit. Nulla vel convallis purus. Nam sollicitudin eu est eu laoreet.
-    </p>
-  </div>
+<div
+    class="container pt-10 pb-20 md:pb-32 md:pt-24 space-y-6 h-full mx-auto pl-5 pr-5 md:max-w-5xl max-w-lg flex flex-col justify-center items-center">
+
+    <h1 class="text-3xl font-bold pb-8 md:pb-20">About Me</h1>
+
+    <p class="md:max-w-xl">Hi there! I'm a computer science major at <strong>California State University, Fullerton</strong>.</p>
+
+    <p class="md:max-w-xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut` aliquip ex ea commodo consequat.</p>
+    
+    <p class="md:max-w-xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut` aliquip ex ea commodo consequat.</p>
+
+    <p class="md:max-w-xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut` aliquip ex ea commodo consequat.</p>
+
 </div>
 
 {% endblock %}

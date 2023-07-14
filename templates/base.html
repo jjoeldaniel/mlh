@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{{url_for('static',filename='favicon.ico')}}" type="image/x-icon">
+
+  <!-- Embed -->
+  <meta property="og:image" content="{{url_for('static',filename='globe.png')}}" />
+  <meta property="og:description" content="Portfolio" />
+  <meta property="og:title" content="Joel's Portfolio" />
+
+  <title>{{ title }}</title>
+</head>
+
+<nav class="bg-white sticky top-0 border-gray-200 px-2 sm:px-4 py-2.5 rounded">
+  {% include 'nav.html' %}
+</nav>
+
+<body>
+
+  {% block content %}{% endblock %}
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></script>
+</body>
+
+</html>
