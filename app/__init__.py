@@ -1,6 +1,8 @@
 import os
 from flask import Flask, render_template, redirect, url_for, request
 from dotenv import load_dotenv
+import hashlib
+
 from peewee import (
     MySQLDatabase,
     Model,
@@ -11,8 +13,17 @@ from peewee import (
 from playhouse.shortcuts import model_to_dict
 import datetime
 
+
+def md5_hash_email(email):
+    md5_hasher = hashlib.md5()
+    md5_hasher.update(email.encode("utf-8"))
+    hashed_email = md5_hasher.hexdigest()
+    return hashed_email
+
+
 load_dotenv()
 app = Flask(__name__, template_folder="../templates", static_folder="../static")
+app.jinja_env.globals.update(md5_hash_email=md5_hash_email)
 
 mydb = MySQLDatabase(
     os.getenv("MYSQL_DATABASE"),
@@ -38,15 +49,25 @@ mydb.create_tables([TimelinePost])
 URL = os.getenv("URL")
 
 
-@app.route("/timeline", methods=["POST"])
-@app.route("/api/timeline_post", methods=["POST"])
-def post_time_line_post():
-    name = request.form["name"]
-    email = request.form["email"]
-    content = request.form["content"]
+def handle_timeline_post(form):
+    name = form["name"]
+    email = form["email"]
+    content = form["content"]
     timeline_post = TimelinePost.create(name=name, email=email, content=content)
 
     return model_to_dict(timeline_post)
+
+
+@app.route("/timeline", methods=["POST"])
+def post_time_line_post():
+    _ = handle_timeline_post(request.form)
+    return redirect(url_for("timeline"))
+
+
+@app.route("/api/timeline_post", methods=["POST"])
+def api_post_time_line_post():
+    timeline_post = handle_timeline_post(request.form)
+    return timeline_post
 
 
 @app.route("/api/timeline_post", methods=["DELETE"])
@@ -92,7 +113,14 @@ def education():
 
 @app.route("/timeline", methods=["GET"])
 def timeline():
-    return render_template("timeline.html", title="Timeline", url=URL)
+    posts = [p for p in TimelinePost.select().order_by(TimelinePost.created_at.desc())]
+
+    return render_template(
+        "timeline.html",
+        title="Timeline",
+        posts=posts,
+        url=URL,
+    )
 
 
 @app.route("/map")
