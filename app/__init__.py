@@ -44,48 +44,78 @@ class TimelinePost(Model):
         database = mydb
 
 
-class InvalidPostException(Exception):
-    "Raised when a post is invalid"
-    pass
-
-
 mydb.connect()
 mydb.create_tables([TimelinePost])
 URL = os.getenv("URL")
 
 
-def handle_timeline_post(form):
-    name = form["name"].strip()
-    email = form["email"].strip()
-    content = form["content"].strip()
-
-    if name == "" or email == "" or content == "":
-        raise InvalidPostException("Invalid post")
-
-    timeline_post = TimelinePost.create(name=name, email=email, content=content)
-    return model_to_dict(timeline_post)
-
-
 @app.route("/timeline", methods=["POST"])
 def post_time_line_post():
-    try:
-        _ = handle_timeline_post(request.form)
-    except InvalidPostException:
-        pass
+    errors = []
+    # check all fields are present
+    if (
+        "content" not in request.form
+        or "name" not in request.form
+        or "email" not in request.form
+    ):
+        if "content" not in request.form:
+            errors.append("Invalid content")
+        if "name" not in request.form:
+            errors.append("Invalid name")
+        if "email" not in request.form:
+            errors.append("Invalid email")
+        return {"errors": errors}, 400
+
+    name = request.form["name"].strip()
+    email = request.form["email"].strip()
+    content = request.form["content"].strip()
+
+    TimelinePost.create(name=name, email=email, content=content)
     return redirect(url_for("timeline"))
 
 
 @app.route("/api/timeline_post", methods=["POST"])
 def api_post_time_line_post():
-    try:
-        timeline_post = handle_timeline_post(request.form)
-        return timeline_post, 200
-    except InvalidPostException:
-        return {"error": "Invalid post"}, 400
+    errors = []
+    # check all fields are present
+    if (
+        "content" not in request.form
+        or "name" not in request.form
+        or "email" not in request.form
+    ):
+        if "content" not in request.form:
+            errors.append("Invalid content")
+        if "name" not in request.form:
+            errors.append("Invalid name")
+        if "email" not in request.form:
+            errors.append("Invalid email")
+        return {"errors": errors}, 400
+
+    name = request.form["name"].strip()
+    email = request.form["email"].strip()
+    content = request.form["content"].strip()
+
+    timeline_post = TimelinePost.create(name=name, email=email, content=content)
+    return model_to_dict(timeline_post), 200
 
 
 @app.route("/api/timeline_post", methods=["DELETE"])
 def delete_time_line_post():
+    errors = []
+    # check all fields are present
+    if (
+        "content" not in request.form
+        or "name" not in request.form
+        or "email" not in request.form
+    ):
+        if "content" not in request.form:
+            errors.append("Invalid content")
+        if "name" not in request.form:
+            errors.append("Invalid name")
+        if "email" not in request.form:
+            errors.append("Invalid email")
+        return {"errors": errors}, 400
+
     name = request.form["name"]
     email = request.form["email"]
     content = request.form["content"]
@@ -111,12 +141,11 @@ def get_timeline_post():
 @app.route("/")
 @app.route("/index")
 def index():
-    # template = env.get_template("index.html")
     """Our default routes of '/' and '/index'
 
     Return: The content we want to display to a user
     """
-    # print(template.render(the="variables", go="here"))
+
     return render_template("index.html", title="Home", url=URL), 200
 
 
