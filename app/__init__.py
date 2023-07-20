@@ -49,21 +49,21 @@ mydb.create_tables([TimelinePost])
 URL = os.getenv("URL")
 
 
+def check_errors(form: dict):
+    errors = []
+    if "name" not in form:
+        errors.append("Invalid name")
+    if "email" not in form:
+        errors.append("Invalid email")
+    if "content" not in form:
+        errors.append("Invalid content")
+    return errors
+
+
 @app.route("/timeline", methods=["POST"])
 def post_time_line_post():
-    errors = []
-    # check all fields are present
-    if (
-        "content" not in request.form
-        or "name" not in request.form
-        or "email" not in request.form
-    ):
-        if "content" not in request.form:
-            errors.append("Invalid content")
-        if "name" not in request.form:
-            errors.append("Invalid name")
-        if "email" not in request.form:
-            errors.append("Invalid email")
+    errors = check_errors(request.form)
+    if len(errors) > 0:
         return {"errors": errors}, 400
 
     name = request.form["name"].strip()
@@ -76,19 +76,8 @@ def post_time_line_post():
 
 @app.route("/api/timeline_post", methods=["POST"])
 def api_post_time_line_post():
-    errors = []
-    # check all fields are present
-    if (
-        "content" not in request.form
-        or "name" not in request.form
-        or "email" not in request.form
-    ):
-        if "content" not in request.form:
-            errors.append("Invalid content")
-        if "name" not in request.form:
-            errors.append("Invalid name")
-        if "email" not in request.form:
-            errors.append("Invalid email")
+    errors = check_errors(request.form)
+    if len(errors) > 0:
         return {"errors": errors}, 400
 
     name = request.form["name"].strip()
@@ -101,19 +90,8 @@ def api_post_time_line_post():
 
 @app.route("/api/timeline_post", methods=["DELETE"])
 def delete_time_line_post():
-    errors = []
-    # check all fields are present
-    if (
-        "content" not in request.form
-        or "name" not in request.form
-        or "email" not in request.form
-    ):
-        if "content" not in request.form:
-            errors.append("Invalid content")
-        if "name" not in request.form:
-            errors.append("Invalid name")
-        if "email" not in request.form:
-            errors.append("Invalid email")
+    errors = check_errors(request.form)
+    if len(errors) > 0:
         return {"errors": errors}, 400
 
     name = request.form["name"]
