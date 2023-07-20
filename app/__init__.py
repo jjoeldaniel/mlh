@@ -79,9 +79,9 @@ def post_time_line_post():
 def api_post_time_line_post():
     try:
         timeline_post = handle_timeline_post(request.form)
-        return timeline_post
+        return timeline_post, 200
     except InvalidPostException:
-        return {"error": "Invalid post"}
+        return {"error": "Invalid post"}, 400
 
 
 @app.route("/api/timeline_post", methods=["DELETE"])
@@ -92,10 +92,10 @@ def delete_time_line_post():
     timeline_post = TimelinePost.get_or_none(name=name, email=email, content=content)
 
     if timeline_post is None:
-        return {"error": "Timeline post does not exist"}
+        return {"error": "Timeline post does not exist"}, 400
     timeline_post.delete_instance()
 
-    return model_to_dict(timeline_post)
+    return model_to_dict(timeline_post), 200
 
 
 @app.route("/api/timeline_post", methods=["GET"])
@@ -105,7 +105,7 @@ def get_timeline_post():
             model_to_dict(p)
             for p in TimelinePost.select().order_by(TimelinePost.created_at.desc())
         ]
-    }
+    }, 200
 
 
 @app.route("/")
@@ -117,39 +117,42 @@ def index():
     Return: The content we want to display to a user
     """
     # print(template.render(the="variables", go="here"))
-    return render_template("index.html", title="Home", url=URL)
+    return render_template("index.html", title="Home", url=URL), 200
 
 
 @app.route("/education")
 def education():
-    return render_template("education.html", title="Education", url=URL)
+    return render_template("education.html", title="Education", url=URL), 200
 
 
 @app.route("/timeline", methods=["GET"])
 def timeline():
     posts = [p for p in TimelinePost.select().order_by(TimelinePost.created_at.desc())]
 
-    return render_template(
-        "timeline.html",
-        title="Timeline",
-        posts=posts,
-        url=URL,
+    return (
+        render_template(
+            "timeline.html",
+            title="Timeline",
+            posts=posts,
+            url=URL,
+        ),
+        200,
     )
 
 
 @app.route("/map")
 def map():
-    return render_template("map.html", title="Map", url=URL)
+    return render_template("map.html", title="Map", url=URL), 200
 
 
 @app.route("/work")
 def work():
-    return render_template("work.html", title="Work", url=URL)
+    return render_template("work.html", title="Work", url=URL), 200
 
 
 @app.route("/hobbies")
 def hobbies():
-    return render_template("hobbies.html", title="Hobbies", url=URL)
+    return render_template("hobbies.html", title="Hobbies", url=URL), 200
 
 
 @app.route("/<path:path>")
