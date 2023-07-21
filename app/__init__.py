@@ -63,7 +63,7 @@ def check_errors(form: dict):
 @app.route("/timeline", methods=["POST"])
 def post_time_line_post():
     errors = check_errors(request.form)
-    if len(errors) > 0:
+    if errors:
         return {"errors": errors}, 400
 
     name = request.form["name"].strip()
@@ -77,7 +77,7 @@ def post_time_line_post():
 @app.route("/api/timeline_post", methods=["POST"])
 def api_post_time_line_post():
     errors = check_errors(request.form)
-    if len(errors) > 0:
+    if errors:
         return {"errors": errors}, 400
 
     name = request.form["name"].strip()
@@ -91,7 +91,7 @@ def api_post_time_line_post():
 @app.route("/api/timeline_post", methods=["DELETE"])
 def delete_time_line_post():
     errors = check_errors(request.form)
-    if len(errors) > 0:
+    if errors:
         return {"errors": errors}, 400
 
     name = request.form["name"]
