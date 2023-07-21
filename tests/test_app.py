@@ -1,8 +1,10 @@
 import unittest
 import os
-os.environ["TESTING"] = 'true'
+
+os.environ["TESTING"] = "true"
 
 from app import app
+
 
 class AppTestCase(unittest.TestCase):
     def setUp(self):
@@ -12,8 +14,10 @@ class AppTestCase(unittest.TestCase):
         response = self.client.get("/")
         assert response.status_code == 200
         html = response.get_data(as_text=True)
-        assert '<p class="md:max-w-xl">Hi there! I\'m a computer science major at <strong>California State University, Fullerton</strong>.</p>' in html
-
+        assert (
+            '<p class="md:max-w-xl">Hi there! I\'m a computer science major at <strong>California State University, Fullerton</strong>.</p>'
+            in html
+        )
 
     def test_navbar_default_style(self):
         response = self.client.get("/")
@@ -32,7 +36,6 @@ class AppTestCase(unittest.TestCase):
         assert response.status_code == 200
         html = response.get_data(as_text=True)
         assert 'id="map_route"' in html
-     
 
     def test_timeline(self):
         response = self.client.get("/api/timeline_post")
@@ -41,12 +44,11 @@ class AppTestCase(unittest.TestCase):
         json = response.get_json()
         assert "timeline_posts" in json
 
-
     def test_api_timeline_post_create(self):
         data = {
             "name": "John Doe",
             "email": "john@example.com",
-            "content": "This is a test post."
+            "content": "This is a test post.",
         }
         response = self.client.post("/api/timeline_post", data=data)
         assert response.status_code == 200
@@ -73,7 +75,10 @@ class AppTestCase(unittest.TestCase):
     def test_timeline_page(self):
         response = self.client.get("/timeline")
         assert response.status_code == 200
-        assert '<h2 class="text-3xl font-bold text-center pb-8 md:pb-16">Timeline</h2>' in response.get_data(as_text=True)
+        assert (
+            '<h2 class="text-3xl font-bold text-center pb-8 md:pb-16">Timeline</h2>'
+            in response.get_data(as_text=True)
+        )
 
     def test_malformed_timeline_post(self):
         response = self.client.post(
