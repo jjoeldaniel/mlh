@@ -1,43 +1,93 @@
 {% extends "base.html" %}
 {% block content %}
 
+<style>
+    .contentbg {
+        background-color: #282c37;
+    }
+    body,
+    .primarybg {
+        background-color: #191b22;
+    }
+    .accentbg {
+        background-color: #6364ff;
+    }
+    .accentbg:hover {
+        background-color: #4c4cff;
+    }
+</style>
+
+<link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
 <div
-    class="container pt-10 pb-20 md:pb-32 md:pt-24 space-y-6 h-full mx-auto pl-5 pr-5 md:max-w-5xl max-w-lg flex flex-col justify-center items-center">
+    class="container text-white pt-10 pb-20 md:pb-32 md:pt-24 space-y-6 h-full mx-auto pl-5 pr-5 md:pr-48 md:max-w-5xl max-w-lg flex flex-col justify-center items-center">
 
     <div class="flex flex-col md:flex-row">
-        <div class="pr-4 md:border-r-8 grow-0 pb-12">
-            <h2 class="text-3xl font-bold text-center pb-8 md:pb-16">Post</h2>
-            <form class="border-4 bg-slate-300 border-gray-400 p-5 rounded-md w-full md:w-[25vh]" id="timeline-form" method="POST">
-                <div class="mb-4">
-                    <label for="name" class="block font-medium text-gray-900">Name:</label>
-                    <input type="text" id="name" name="name" class="mt-1 block w-full border border-gray-300 p-2 rounded" maxlength="25" required>
+        <div class="grow-0 pb-12">
+            <div class="border pb-4 rounded-md border-transparent">
+                <input type="text" placeholder="Search 🔍" class="w-full contentbg p-2 rounded-md">
+            </div>
+            <form class=" w-full md:w-[25vh]" id="timeline-form"
+                method="POST">
+                <div class="contentbg p-5 rounded-md">
+                    <div class="mb-2">
+                        <label for="name" class="block font-medium">Name:</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe"
+                            class="mt-1 text-black block w-full border border-gray-300 p-2 rounded" maxlength="25" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block font-medium">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="johndoe@email.com"
+                            class="mt-1 text-black block w-full border border-gray-300 p-2 rounded" maxlength="25" required>
+                    </div>
+                    <div class="mb-4">
+                        <textarea id="content" placeholder="What's on your mind?" name="content" rows="3"
+                            class="mt-1 text-black block w-full border border-gray-300 p-2 rounded" maxlength="500"
+                            required></textarea>
+                    </div>
                 </div>
-                <div class="mb-4">
-                    <label for="email" class="block font-medium text-gray-900">Email:</label>
-                    <input type="email" id="email" name="email" class="mt-1 block w-full border border-gray-300 p-2 rounded" maxlength="25" required>
-                </div>
-                <div class="mb-4">
-                    <label for="content" class="block font-medium text-gray-900">Content:</label>
-                    <textarea id="content" name="content" rows="2" class="mt-1 block w-full border border-gray-300 p-2 rounded" maxlength="500" required></textarea>
-                </div>
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    Submit
+                <button type="submit" class="accentbg mt-4 float-right hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Publish!
                 </button>
             </form>
         </div>
-        <div class="md:pl-4">
-            <h2 class="text-3xl font-bold text-center pb-8 md:pb-16">Timeline</h2>
+        <div class="md:pl-5">
+            <div class="space-y-3 contentbg border rounded-md border-transparent">
 
-            {% for post in posts %}
-            <div class="border-4 bg-slate-200 border-gray-400 p-2 w-[35vh] md:w-[55vh]">
-                <div class="flex flex-row">
-                    <div class="pr-2"><img class="w-8 rounded-full" src="http://www.gravatar.com/avatar/{{md5_hash_email(post.email)}}"></div>
-                    <h4 class="text-xl font-bold text-center pb-8">@{{post.name}}</h4>
+                <h2 class="text-lg font-bold p-4 text-left border-b-2 border-gray-700">Home</h2>
+
+                {% for post in posts %}
+                <div class="p-2 border-b-2 border-gray-700 w-[35vh] md:w-[55vh]">
+                    <div class="flex flex-row justify-between">
+                        <div class="flex flex-row">
+                            <div class="pr-2"><img class="w-8 rounded-md"
+                                    src="http://www.gravatar.com/avatar/{{md5_hash_email(post.email)}}"></div>
+                            <h4 class="text-lg font-semibold text-center pb-4">@{{post.name}}</h4>
+                        </div>
+                        <span class="text-right text-gray-600">{{post.created_at.strftime("%b %d")}}</span>
+                    </div>
+                    <p class="pl-2 md:pl-10">{{post.content}}</p>
+                    <div class="flex flex-row pt-6 justify-between">
+                        <span class="material-symbols-outlined">
+                            reply
+                        </span>
+                        <span class="material-symbols-outlined">
+                            favorite
+                        </span>
+                        <span class="material-symbols-outlined">
+                            bookmark
+                        </span>
+                        <span class="material-symbols-outlined">
+                            flag
+                        </span>
+                        <span class="material-symbols-outlined">
+                            more_horiz
+                        </span>
+                    </div>
                 </div>
-                <p class="pl-2 md:pl-10">{{post.content}}</p> 
-                <footer class="text-right text-gray-600">{{post.created_at.strftime("%b %d")}}</footer>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
     </div>
 
