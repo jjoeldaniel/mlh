@@ -5,16 +5,20 @@
     .contentbg {
         background-color: #282c37;
     }
+
     body,
     .primarybg {
         background-color: #191b22;
     }
+
     .accentbg {
         background-color: #6364ff;
     }
+
     .accenttext {
         color: #606984;
     }
+
     .accentbg:hover {
         background-color: #4c4cff;
     }
@@ -29,20 +33,24 @@
     <div class="flex flex-col md:flex-row">
         <div class="grow-0 pb-12">
             <div class="border pb-4 rounded-md border-transparent">
-                <input type="text" placeholder="Search 🔍" class="w-full contentbg p-2 rounded-md">
+                <form action="/timeline/search" method="GET" class="flex contentbg p-2 rounded-md">
+                    <input name="query" type="text" placeholder="Search here" class="contentbg">
+                    <button type="submit" class="accenttext">Submit</button>
+                </form>
             </div>
-            <form class=" w-full md:w-[25vh]" id="timeline-form"
-                method="POST">
+            <form class="w-full md:w-[25vh]" id="timeline-form" method="POST" action="/timeline">
                 <div class="contentbg p-5 rounded-md">
                     <div class="mb-2">
                         <label for="name" class="block font-medium">Name:</label>
                         <input type="text" id="name" name="name" placeholder="John Doe"
-                            class="mt-1 text-black block w-full border border-gray-300 p-2 rounded" maxlength="25" required>
+                            class="mt-1 text-black block w-full border border-gray-300 p-2 rounded" maxlength="25"
+                            required>
                     </div>
                     <div class="mb-4">
                         <label for="email" class="block font-medium">Email:</label>
                         <input type="email" id="email" name="email" placeholder="johndoe@email.com"
-                            class="mt-1 text-black block w-full border border-gray-300 p-2 rounded" maxlength="25" required>
+                            class="mt-1 text-black block w-full border border-gray-300 p-2 rounded" maxlength="25"
+                            required>
                     </div>
                     <div class="mb-4">
                         <textarea id="content" placeholder="What's on your mind?" name="content" rows="3"
@@ -50,7 +58,8 @@
                             required></textarea>
                     </div>
                 </div>
-                <button type="submit" class="accentbg mt-4 float-right hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <button type="submit"
+                    class="accentbg mt-4 float-right hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Publish!
                 </button>
             </form>
@@ -58,9 +67,16 @@
         <div class="md:pl-5">
             <div class="space-y-3 contentbg border rounded-md border-transparent">
 
-                <h2 class="text-lg flex items-center font-bold p-3 text-left border-b-2 border-gray-700"><span class="material-symbols-outlined pr-2">
-                    home
+                <h2 class="text-lg flex items-center font-bold p-3 text-left border-b-2 border-gray-700"><span
+                        class="material-symbols-outlined pr-2">
+                        home
                     </span>Home</h2>
+
+                {% if not posts %}
+                <div class="p-4 border-b-2 border-gray-700 w-[35vh] md:w-[55vh]">
+                    <h2 class="font-semibold text-xl pb-3">No posts found!</h2>
+                </div>
+                {% endif %}
 
                 {% for post in posts %}
                 <div class="p-4 border-b-2 border-gray-700 w-[35vh] md:w-[55vh]">

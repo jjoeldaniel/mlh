@@ -147,6 +147,31 @@ def timeline():
     )
 
 
+@app.route("/timeline/search", methods=["GET"])
+def search_timeline():
+    # search for posts containing the search term
+    query: str | None = request.args.get("query")
+
+    if query is None:
+        return redirect(url_for("timeline"))
+
+    posts = [
+        p
+        for p in TimelinePost.select().order_by(TimelinePost.created_at.desc())
+        if query.lower() in p.content.lower()
+    ]
+
+    return (
+        render_template(
+            "timeline.html",
+            title="Timeline",
+            posts=posts,
+            url=URL,
+        ),
+        200,
+    )
+
+
 @app.route("/map")
 def map():
     return render_template("map.html", title="Map", url=URL), 200
