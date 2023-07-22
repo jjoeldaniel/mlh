@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 
+<script>
+    function randomNumber() {
+        // 
+    }
+</script>
+
 <style>
     .contentbg {
         background-color: #282c37;
@@ -11,6 +17,9 @@
     }
     .accentbg {
         background-color: #6364ff;
+    }
+    .accenttext {
+        color: #606984;
     }
     .accentbg:hover {
         background-color: #4c4cff;
@@ -67,25 +76,30 @@
                                     src="http://www.gravatar.com/avatar/{{md5_hash_email(post.email)}}"></div>
                             <h4 class="text-lg font-semibold text-center pb-4">@{{post.name}}</h4>
                         </div>
-                        <span class="text-right text-gray-600">{{post.created_at.strftime("%b %d")}}</span>
+                        <span class="text-right accenttext">{{post.created_at.strftime("%b %d")}}</span>
                     </div>
                     <p class="pl-2 md:pl-10">{{post.content}}</p>
                     <div class="flex flex-row pt-6 justify-between">
-                        <span class="material-symbols-outlined">
-                            reply
-                        </span>
-                        <span class="material-symbols-outlined">
+                        <div class="flex items-center">
+                            <button class="hover:text-green-500 material-symbols-outlined">
+                                reply
+                            </button>
+                            <span class="pl-1 text-sm accenttext">
+                                {{ range(1, 999) | random }}
+                            </span>
+                        </div>
+                        <button class="hover:text-red-500 material-symbols-outlined">
                             favorite
-                        </span>
-                        <span class="material-symbols-outlined">
+                        </button>
+                        <button class="hover:text-yellow-500 material-symbols-outlined">
                             bookmark
-                        </span>
-                        <span class="material-symbols-outlined">
+                        </button>
+                        <button class="hover:text-red-500 material-symbols-outlined">
                             flag
-                        </span>
-                        <span class="material-symbols-outlined">
+                        </button>
+                        <button class="material-symbols-outlined">
                             more_horiz
-                        </span>
+                        </button>
                     </div>
                 </div>
                 {% endfor %}
