@@ -1,80 +1,103 @@
 <script>
-  let route = window.location.pathname;
+    let route = window.location.pathname;
 
-  onload = () => {
-      switch (route) {
-          case '/home': case '/index': case '/':
-              document.getElementById('home_route').style.color = '#1a56db';
-              break;
-          case '/education':
-              document.getElementById('education_route').style.color = '#1a56db';
-              break;
-          case '/map':
-              document.getElementById('map_route').style.color = '#1a56db';
-              break;
-          case '/timeline':
-              document.getElementById('timeline_route').style.color = '#1a56db';
-              break;
-          case '/work':
-              document.getElementById('work_route').style.color = '#1a56db';
-              break;
-          case '/hobbies':
-              document.getElementById('hobbies_route').style.color = '#1a56db';
-              break;
-          default:
-              document.getElementById('home_route').style.color = '#1a56db';
-              break;
-      }
-  }
+    onload = () => {
+        let activeColor = '#6364ff';
+        switch (route) {
+            case '/home': case '/index': case '/':
+                document.getElementById('home_route').style.color = activeColor;
+                break;
+            case '/education':
+                document.getElementById('education_route').style.color = activeColor;
+                break;
+            case '/map':
+                document.getElementById('map_route').style.color = activeColor;
+                break;
+            case '/timeline':
+                document.getElementById('timeline_route').style.color = activeColor;
+                break;
+            case '/work':
+                document.getElementById('work_route').style.color = activeColor;
+                break;
+            case '/hobbies':
+                document.getElementById('hobbies_route').style.color = activeColor;
+                break;
+            default:
+                document.getElementById('home_route').style.color = activeColor;
+                break;
+        }
+    }
 
 </script>
 
-<div class="container flex flex-wrap items-center justify-center mx-auto">
-  <a href="/home" class="flex items-center">
-      <img src="{{url_for('static',filename='img/globe.png')}}" class="h-6 mr-3 sm:h-9" alt="Flowbite Logo">
-      <span class="self-center text-xl font-semibold whitespace-nowrap">Joel's Portfolio</span>
-  </a>
-  <div class="flex md:order-2 pl-5">
-      <button data-collapse-toggle="navbar-cta" type="button"
-          class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 :text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600dark"
-          aria-controls="navbar-cta" aria-expanded="false">
-          <span class="sr-only">Open main menu</span>
-          <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd"
-                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                  clip-rule="evenodd"></path>
-          </svg>
-      </button>
-  </div>
-  <div class="items-center justify-between pl-8 hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
-      <ul
-          class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
-          <li>
-              <a href="/home" id="home_route"
-                  class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 "
-                  aria-current="page">Home</a>
-          </li>
-          <li>
-              <a href="/education" id="education_route"
-                  class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 ">Education</a>
-          </li>
-          <li>
-              <a href="/map" id="map_route"
-                  class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Map</a>
-          </li>
-          <li>
-            <a href="/timeline" id="timeline_route"
-                class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Timeline</a>
-        </li>
-          <li>
-            <a href="/work" id="work_route"
-                class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Work</a>
-        </li>
-        <li>
-            <a href="/hobbies" id="hobbies_route"
-                class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Hobbies</a>
-        </li>
-      </ul>
-  </div>
+<style>
+    .contentbg {
+        background-color: #282c37;
+    }
+
+    body,
+    .primarybg {
+        background-color: #191b22;
+    }
+
+    .accentbg {
+        background-color: #6364ff;
+    }
+
+    .accentbg button:hover {
+        background-color: #4c4cff;
+    }
+
+    a:hover {
+        background-color: #4c4cff;
+    }
+</style>
+
+<div class="container primarybg text-white primarybg flex flex-wrap items-center justify-center mx-auto">
+    <a href="/home" class="flex items-center">
+        <img src="{{url_for('static',filename='img/globe.png')}}" class="h-6 mr-3 sm:h-9" alt="Flowbite Logo">
+        <span class="self-center text-xl  font-semibold whitespace-nowrap">Joel's Portfolio</span>
+    </a>
+    <div class="flex md:order-2 pl-5">
+        <button data-collapse-toggle="navbar-cta" type="button"
+            class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 :text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600dark"
+            aria-controls="navbar-cta" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                    clip-rule="evenodd"></path>
+            </svg>
+        </button>
+    </div>
+    <div class="items-center justify-between pl-8 hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
+        <ul class="flex flex-col p-4 mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0">
+            <li>
+                <a href="/home" id="home_route"
+                    class="block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent  md:p-0 "
+                    aria-current="page">Home</a>
+            </li>
+            <li>
+                <a href="/education" id="education_route"
+                    class="block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent  md:p-0 ">Education</a>
+            </li>
+            <li>
+                <a href="/map" id="map_route"
+                    class="block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">Map</a>
+            </li>
+            <li>
+                <a href="/timeline" id="timeline_route"
+                    class="block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">Timeline</a>
+            </li>
+            <li>
+                <a href="/work" id="work_route"
+                    class="block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">Work</a>
+            </li>
+            <li>
+                <a href="/hobbies" id="hobbies_route"
+                    class="block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">Hobbies</a>
+            </li>
+        </ul>
+    </div>
 </div>
