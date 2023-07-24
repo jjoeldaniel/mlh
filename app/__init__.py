@@ -1,4 +1,5 @@
 import os
+import random
 from flask import Flask, render_template, redirect, url_for, request
 from dotenv import load_dotenv
 import hashlib
@@ -9,6 +10,7 @@ from peewee import (
     CharField,
     TextField,
     DateTimeField,
+    IntegerField,
 )
 from playhouse.shortcuts import model_to_dict
 import datetime
@@ -39,6 +41,8 @@ class TimelinePost(Model):
     email = CharField()
     content = TextField()
     created_at = DateTimeField(default=datetime.datetime.now)
+    likes = IntegerField(default=random.randint(0, 75))
+    replies = IntegerField(default=random.randint(0, 250))
 
     class Meta:
         database = mydb

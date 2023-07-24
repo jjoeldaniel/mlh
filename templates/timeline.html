@@ -95,12 +95,17 @@
                                 reply
                             </button>
                             <span class="pl-1 text-sm accenttext">
-                                {{ range(1, 999) | random }}
+                                {{ post.replies }}
                             </span>
                         </div>
-                        <button class="hover:text-red-500 material-symbols-outlined">
-                            favorite
-                        </button>
+                        <div class="flex items-center">
+                            <button class="hover:text-red-500 material-symbols-outlined">
+                                favorite
+                            </button>
+                            <span class="pl-1 text-sm accenttext">
+                                {{ post.likes }}
+                            </span>
+                        </div>
                         <button class="hover:text-yellow-500 material-symbols-outlined">
                             bookmark
                         </button>

@@ -584,10 +584,6 @@ video {
   position: static;
 }
 
-.fixed {
-  position: fixed;
-}
-
 .sticky {
   position: sticky;
 }
@@ -687,11 +683,6 @@ video {
 
 .w-full {
   width: 100%;
-}
-
-.w-fit {
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
 .max-w-lg {
@@ -850,6 +841,10 @@ video {
   padding-bottom: 5rem;
 }
 
+.pb-3 {
+  padding-bottom: 0.75rem;
+}
+
 .pb-4 {
   padding-bottom: 1rem;
 }
@@ -908,10 +903,6 @@ video {
 
 .pt-6 {
   padding-top: 1.5rem;
-}
-
-.pb-3 {
-  padding-bottom: 0.75rem;
 }
 
 .text-left {
