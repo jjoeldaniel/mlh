@@ -34,7 +34,7 @@
         <div class="grow-0 pb-12">
             <div class="border pb-4 rounded-md border-transparent">
                 <form action="/timeline/search" method="GET" class="flex justify-between contentbg p-2 rounded-md">
-                    <input name="query" maxlength="15" type="text" placeholder="Search here" class="contentbg">
+                    <input name="query" maxlength="15" type="text" placeholder="Search here" class="contentbg focus:outline-none">
                     <button type="submit" class="pr-0 mr-0 accenttext material-symbols-outlined">search</button>
                 </form>
             </div>
@@ -43,18 +43,18 @@
                     <div class="mb-2">
                         <label for="name" class="block font-medium">Name:</label>
                         <input type="text" id="name" name="name" placeholder="John Doe"
-                            class="mt-1 text-black block w-full border border-gray-300 p-2 rounded" maxlength="25"
+                            class="mt-1 text-black block w-full border border-gray-300 p-2 rounded focus:outline-none" maxlength="25"
                             required>
                     </div>
                     <div class="mb-4">
                         <label for="email" class="block font-medium">Email:</label>
                         <input type="email" id="email" name="email" placeholder="johndoe@email.com"
-                            class="mt-1 text-black block w-full border border-gray-300 p-2 rounded" maxlength="25"
+                            class="mt-1 text-black block w-full border border-gray-300 p-2 rounded focus:outline-none" maxlength="25"
                             required>
                     </div>
                     <div class="mb-4">
                         <textarea id="content" placeholder="What's on your mind?" name="content" rows="3"
-                            class="mt-1 text-black block w-full border border-gray-300 p-2 rounded" maxlength="500"
+                            class="mt-1 text-black block w-full border border-gray-300 p-2 rounded focus:outline-none" maxlength="500"
                             required></textarea>
                     </div>
                 </div>
