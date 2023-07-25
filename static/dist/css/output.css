@@ -637,6 +637,10 @@ video {
   margin-top: 1rem;
 }
 
+.mr-0 {
+  margin-right: 0px;
+}
+
 .block {
   display: block;
 }
@@ -905,6 +909,10 @@ video {
   padding-top: 1.5rem;
 }
 
+.pr-0 {
+  padding-right: 0px;
+}
+
 .text-left {
   text-align: left;
 }
@@ -919,6 +927,10 @@ video {
 
 .text-justify {
   text-align: justify;
+}
+
+.align-middle {
+  vertical-align: middle;
 }
 
 .text-2xl {

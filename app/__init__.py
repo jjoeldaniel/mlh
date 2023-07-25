@@ -146,6 +146,7 @@ def timeline():
             title="Timeline",
             posts=posts,
             url=URL,
+            search=False,
         ),
         200,
     )
@@ -156,8 +157,10 @@ def search_timeline():
     # search for posts containing the search term
     query: str | None = request.args.get("query")
 
-    if query is None:
+    if query is None or query.strip() == "":
         return redirect(url_for("timeline"))
+
+    query = query.strip()
 
     posts = [
         p
@@ -171,6 +174,8 @@ def search_timeline():
             title="Timeline",
             posts=posts,
             url=URL,
+            search=True,
+            query=query,
         ),
         200,
     )

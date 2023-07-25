@@ -33,9 +33,9 @@
     <div class="flex flex-col md:flex-row">
         <div class="grow-0 pb-12">
             <div class="border pb-4 rounded-md border-transparent">
-                <form action="/timeline/search" method="GET" class="flex contentbg p-2 rounded-md">
+                <form action="/timeline/search" method="GET" class="flex justify-between contentbg p-2 rounded-md">
                     <input name="query" type="text" placeholder="Search here" class="contentbg">
-                    <button type="submit" class="accenttext">Submit</button>
+                    <button type="submit" class="pr-0 mr-0 accenttext material-symbols-outlined">search</button>
                 </form>
             </div>
             <form class="w-full md:w-[25vh]" id="timeline-form" method="POST" action="/timeline">
@@ -70,7 +70,15 @@
                 <h2 class="text-lg flex items-center font-bold p-3 text-left border-b-2 border-gray-700"><span
                         class="material-symbols-outlined pr-2">
                         home
-                    </span>Home</h2>
+                    </span>
+                    
+                    <a href="/timeline">Home</a>
+
+                    {% if search %}
+                    <span class="pl-2 text-sm accenttext"> > Results for "{{ query }}"</span>
+                    {% endif %}
+                
+                </h2>
 
                 {% if not posts %}
                 <div class="p-4 border-b-2 border-gray-700 w-[35vh] md:w-[55vh]">
