@@ -27,14 +27,17 @@ load_dotenv()
 app = Flask(__name__, template_folder="../templates", static_folder="../static")
 app.jinja_env.globals.update(md5_hash_email=md5_hash_email)
 
-mydb = MySQLDatabase(
-    os.getenv("MYSQL_DATABASE"),
-    user=os.getenv("MYSQL_USER"),
-    password=os.getenv("MYSQL_PASSWORD"),
-    host=os.getenv("MYSQL_HOST"),
-    port=3306,
-)
-
+if os.getenv("TESTING") == "true":
+    print("Running in test mode")
+    mydb = SqliteDatabase('file:memory?mode=memory&cache=shared', uri=True)
+else:
+    mydb = MySQLDatabase(
+        os.getenv("MYSQL_DATABASE"),
+        user=os.getenv("MYSQL_USER"),
+        password=os.getenv("MYSQL_PASSWORD"),
+        host=os.getenv("MYSQL_HOST"),
+        port=3306
+    )
 
 class TimelinePost(Model):
     name = CharField()
