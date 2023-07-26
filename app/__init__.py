@@ -11,6 +11,7 @@ from peewee import (
     TextField,
     DateTimeField,
     IntegerField,
+    SqliteDatabase
 )
 from playhouse.shortcuts import model_to_dict
 import datetime
