@@ -2,10 +2,9 @@
 
 echo "Flask server starting"
 
-cd $HOME/projects/mlh_port
-git fetch && git reset origin/main --hard
-source venv/bin/activate && pip install -r requirements.txt
-
-systemctl restart myportfolio
+cd mlh
+git fetch && reset origin/main --hard
+docker compose -f docker-compose.prod.yml down
+docker compose -f docker-compose.prod.yml up -d --build
 
 echo "Flask server successfully started"
