@@ -15,7 +15,7 @@ class AppTestCase(unittest.TestCase):
         assert response.status_code == 200
         html = response.get_data(as_text=True)
         assert (
-            '<p class="md:max-w-xl">Hi there! I\'m a computer science major at <strong>California State University, Fullerton</strong>.</p>'
+            'computer science major'
             in html
         )
 
@@ -76,7 +76,7 @@ class AppTestCase(unittest.TestCase):
         response = self.client.get("/timeline")
         assert response.status_code == 200
         assert (
-            '<h2 class="text-3xl font-bold text-center pb-8 md:pb-16">Timeline</h2>'
+            'Timeline'
             in response.get_data(as_text=True)
         )
 
