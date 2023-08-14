@@ -18,9 +18,7 @@ import datetime
 
 
 def md5_hash_email(email):
-'''
-Return hash of email
-'''
+    """Return hash of email"""
 
     md5_hasher = hashlib.md5()
     md5_hasher.update(email.encode("utf-8"))
